@@ -48,7 +48,7 @@ O SQL pode ser reexecutado em um banco criado por este projeto. `create table if
 - Extra 2: tema escuro persistido no dispositivo, incluindo gráficos.
 - Consultas paginadas para não limitar os totais aos primeiros 1.000 registros.
 
-`src/views`: autenticação e área interna. `src/components`: filtro e formulário reutilizáveis. `src/lib`: conexão, formatação e cálculos. `src/store.ts`: sessão, tema e dados compartilhados. `database`: SQL. `tests`: testes dos cálculos. `docs`: materiais para apresentação. `src/style.css`: layout responsivo.
+`src/views`: um arquivo completo por página (Login, Cadastro, Dashboard, Receitas, Despesas e Configurações), com interface e funções específicas. `src/components`: layout e filtro reutilizáveis. `src/lib`: conexão, formatação e cálculos. `src/store.ts`: sessão, tema e dados compartilhados. `database`: SQL. `tests`: testes dos cálculos. `docs`: materiais para apresentação. `src/style.css`: layout responsivo. Veja [o mapa das páginas](docs/ESTRUTURA.md).
 
 ## Verificação e build
 
@@ -59,7 +59,7 @@ npm run build
 npm run preview
 ```
 
-O build estático fica em `dist`. Usa navegação por hash, dispensando regras especiais de fallback nas hospedagens estáticas. Não há APK ou integração nativa Capacitor nesta entrega.
+O build estático fica em `dist`. Usa navegação por hash, dispensando regras especiais de fallback nas hospedagens estáticas. A versão Android usa Capacitor 8; veja [docs/ANDROID.md](docs/ANDROID.md).
 
 Os testes automatizados cobrem valores com vírgula, centavos, entradas inválidas, totais, saldo, ausência de receita, agrupamento mensal entre anos, categorias, filtros inclusivos e datas. TypeScript e build verificam a compilação. Autenticação, CRUD, confirmação por e-mail e RLS precisam de um Supabase configurado; não foram testados contra um banco real nesta entrega. Veja [docs/VALIDACAO.md](docs/VALIDACAO.md) para executar essa validação.
 

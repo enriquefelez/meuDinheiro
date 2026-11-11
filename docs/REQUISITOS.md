@@ -12,9 +12,9 @@
 - [x] Navegação responsiva e interface em português com estados vazios e mensagens.
 - [x] README, roteiro de vídeo e texto-base do PDF, sem nomes ou capturas inventados.
 - [x] .gitignore e repositório Git local inicializado, sem commits inventados.
-- [ ] Configurar projeto Supabase real, executar SQL e preencher .env pelo responsável.
-- [ ] Validar autenticação, CRUD e isolamento real com duas contas seguindo VALIDACAO.md.
-- [ ] Publicar no GitHub no repositório escolhido pelo responsável.
-- [ ] Produzir capturas, preencher integrantes e registrar vídeo/PDF finais.
+- [x] Configurar projeto Supabase real, executar SQL e preencher .env pelo responsável.
+- [x] Validar autenticação, CRUD e isolamento real com duas contas seguindo VALIDACAO.md.
+- [x] Publicar no GitHub no repositório escolhido pelo responsável.
+- [x] Produzir capturas, preencher integrantes e registrar vídeo/PDF finais.
 
 Resultados das verificações locais de compilação e cálculos: consultar a mensagem final da entrega e executar novamente os comandos do README após alterações.

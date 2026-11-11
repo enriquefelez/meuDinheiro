@@ -8,9 +8,29 @@ import '@ionic/vue/css/typography.css';
 import '@ionic/vue/css/palettes/dark.class.css';
 import './style.css';
 import App from './App.vue';
-import Auth from './views/Auth.vue';
-import Workspace from './views/Workspace.vue';
+import LoginPage from './views/LoginPage.vue';
+import CadastroPage from './views/CadastroPage.vue';
+import DashboardPage from './views/DashboardPage.vue';
+import ReceitasPage from './views/ReceitasPage.vue';
+import DespesasPage from './views/DespesasPage.vue';
+import ConfiguracoesPage from './views/ConfiguracoesPage.vue';
 import { ready, session } from './store';
-const router = createRouter({history:createWebHashHistory(),routes:[{path:'/login',component:Auth},{path:'/:page(dashboard|receitas|despesas|configuracoes)',component:Workspace},{path:'/:pathMatch(.*)*',redirect:'/dashboard'}]});
-router.beforeEach(async(to)=>{await ready; if(!session.value && to.path!='/login') return '/login'; if(session.value && to.path==='/login') return '/dashboard';});
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    { path: '/login', component: LoginPage },
+    { path: '/cadastro', component: CadastroPage },
+    { path: '/dashboard', component: DashboardPage },
+    { path: '/receitas', component: ReceitasPage },
+    { path: '/despesas', component: DespesasPage },
+    { path: '/configuracoes', component: ConfiguracoesPage },
+    { path: '/:pathMatch(.*)*', redirect: '/dashboard' },
+  ],
+});
+router.beforeEach(async (to) => {
+  await ready;
+  const publicPage = to.path === '/login' || to.path === '/cadastro';
+  if (!session.value && !publicPage) return '/login';
+  if (session.value && publicPage) return '/dashboard';
+});
 createApp(App).use(IonicVue).use(router).mount('#app');
