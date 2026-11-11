@@ -1,0 +1,16 @@
+import { createApp } from 'vue';
+import { IonicVue } from '@ionic/vue';
+import { createRouter, createWebHashHistory } from 'vue-router';
+import '@ionic/vue/css/core.css';
+import '@ionic/vue/css/normalize.css';
+import '@ionic/vue/css/structure.css';
+import '@ionic/vue/css/typography.css';
+import '@ionic/vue/css/palettes/dark.class.css';
+import './style.css';
+import App from './App.vue';
+import Auth from './views/Auth.vue';
+import Workspace from './views/Workspace.vue';
+import { ready, session } from './store';
+const router = createRouter({history:createWebHashHistory(),routes:[{path:'/login',component:Auth},{path:'/:page(dashboard|receitas|despesas|configuracoes)',component:Workspace},{path:'/:pathMatch(.*)*',redirect:'/dashboard'}]});
+router.beforeEach(async(to)=>{await ready; if(!session.value && to.path!='/login') return '/login'; if(session.value && to.path==='/login') return '/dashboard';});
+createApp(App).use(IonicVue).use(router).mount('#app');
